@@ -9,9 +9,9 @@ import com.mysql.jdbc.ResultSetMetaData;
 public class DatabaseConnector {
 	
 	/* Database configuration */
-	private static String DB_NAME = "jdbc:mysql://localhost:3306/project3";
-	private static String DB_USERNAME = "root";
-	private static String DB_PASSWORD = "root";
+	private static String DB_NAME = "jdbc:mysql://138.197.12.171:3306/project3";
+	private static String DB_USERNAME = "project3user";
+	private static String DB_PASSWORD = "61^5ZQyD365j";
 	private static Connection conn;
 	
 	/* Open connection function */
