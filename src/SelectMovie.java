@@ -109,7 +109,7 @@ public class SelectMovie extends JFrame {
 		east.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					if(Screening.next() && Movie.next()) {
+					if(Movie.next() && Screening.next() || !Movie.previous() && !Screening.previous()) {
 						
 						BufferedImage image = LoadImage(Movie);
 						icon.setIcon(fitImage(image,icon));
@@ -136,7 +136,7 @@ public class SelectMovie extends JFrame {
 		west.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					if(Screening.previous() && Movie.previous()) {
+					if(Movie.previous() && Screening.previous() || !Movie.next() && !Screening.next()) {
 						
 						BufferedImage image = LoadImage(Movie);
 						icon.setIcon(fitImage(image,icon));
@@ -158,18 +158,13 @@ public class SelectMovie extends JFrame {
 		});
 		west.setBounds(10, 197, 69, 54);
 		contentPane.add(west);
-		
-		
-		
-		
-		
+
 	}
 	
 	public ResultSet getFromDb(String cmd) throws SQLException {
 		
 		DatabaseConnector db = new DatabaseConnector();
 		ResultSet rs = db.querySQL(cmd);
-		
 		return rs;
 		
 	}
@@ -194,9 +189,7 @@ public class SelectMovie extends JFrame {
 		
 		Image dimg = image.getScaledInstance(icon.getWidth(), icon.getHeight(),
 		        Image.SCALE_SMOOTH);
-		
 		ImageIcon imageicon = new ImageIcon(dimg);
-		
 		return imageicon;
 	}
 }
