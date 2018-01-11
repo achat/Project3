@@ -9,9 +9,9 @@ import com.mysql.jdbc.ResultSetMetaData;
 public class DatabaseConnector {
 	
 	/* Database configuration */
-	private static String DB_NAME = "test";
-	private static String DB_USERNAME = "test";
-	private static String DB_PASSWORD = "test";
+	private static String DB_NAME = "x";
+	private static String DB_USERNAME = "x";
+	private static String DB_PASSWORD = "x";
 	private static Connection conn;
 	
 	/* Open connection function */
@@ -45,6 +45,19 @@ public class DatabaseConnector {
 		return result;
 	}
 	
+	public int updatequerySQL(String query)  {
+		openConnection();
+		int result = 0;
+		try {
+			PreparedStatement statement = conn.prepareStatement(query);
+			result = statement.executeUpdate();
+		} catch(SQLException e) {
+			System.out.println("SQL exception occured" + e);
+		}
+
+		return result;
+	}
+	
 	/* Print result function (optional) */
 	public static void printResultSet(ResultSet rs) {
 		try {
@@ -61,5 +74,6 @@ public class DatabaseConnector {
 			System.out.println("SQL exception occured" + e);
 		}
 	}
+	
 	
 }

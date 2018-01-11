@@ -57,10 +57,10 @@ public class SelectMovie extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		ResultSet Movie = getFromDb("SELECT * FROM Movies");
+		ResultSet Movie = new DatabaseConnector().querySQL("SELECT * FROM Movies");
 		Movie.next();
 		BufferedImage image = LoadImage(Movie);
-		ResultSet Screening = getFromDb("SELECT * FROM Screenings");
+		ResultSet Screening = new DatabaseConnector().querySQL("SELECT * FROM Screenings");
 		Screening.next();
 		
 		JLabel icon = new JLabel();
@@ -88,7 +88,8 @@ public class SelectMovie extends JFrame {
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				setVisible(false);
-				new SeatBooking().setVisible(true);
+				System.out.println(name.getText());
+				new SeatBooking(name.getText()).setVisible(true);
 			}
 		});
 		button.setBounds(398, 424, 131, 23);
@@ -183,13 +184,6 @@ public class SelectMovie extends JFrame {
 
 	}
 	
-	public ResultSet getFromDb(String cmd) throws SQLException {
-		
-		DatabaseConnector db = new DatabaseConnector();
-		ResultSet rs = db.querySQL(cmd);
-		return rs;
-		
-	}
 	
 	public BufferedImage LoadImage(ResultSet r) throws SQLException {
 
