@@ -30,18 +30,18 @@ public class SelectMovie extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					SelectMovie frame = new SelectMovie();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					SelectMovie frame = new SelectMovie();
+//					frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 
 	/**
 	 * Create the frame.
@@ -57,7 +57,7 @@ public class SelectMovie extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		ResultSet Movie = getFromDb("SELECT ImageUrl FROM Movies");
+		ResultSet Movie = getFromDb("SELECT * FROM Movies");
 		Movie.next();
 		BufferedImage image = LoadImage(Movie);
 		ResultSet Screening = getFromDb("SELECT * FROM Screenings");
@@ -85,7 +85,13 @@ public class SelectMovie extends JFrame {
 		contentPane.add(date);
 		
 		JButton button = new JButton("Επιλογή Θέσεων");
-		button.setBounds(398, 407, 131, 23);
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				setVisible(false);
+				new SeatBooking().setVisible(true);
+			}
+		});
+		button.setBounds(398, 424, 131, 23);
 		contentPane.add(button);
 		
 		JLabel label = new JLabel("Ώρα:");
@@ -104,6 +110,14 @@ public class SelectMovie extends JFrame {
 		hall.setBounds(27, 454, 104, 28);
 		contentPane.add(hall);
 		
+		JLabel label_3 = new JLabel("Διάρκεια:");
+		label_3.setBounds(230, 435, 104, 28);
+		contentPane.add(label_3);
+		
+		JLabel duration = new JLabel(Movie.getString(3));
+		duration.setBounds(230, 454, 43, 28);
+		contentPane.add(duration);
+		
 		
 		BasicArrowButton east = new BasicArrowButton(BasicArrowButton.EAST);
 		east.addActionListener(new ActionListener() {
@@ -118,6 +132,8 @@ public class SelectMovie extends JFrame {
 						time.setText(Screening.getString(2));
 						date.setText(Screening.getString(3));
 						hall.setText(Screening.getString(4));
+						duration.setText(Movie.getString(3));
+						
 						
 					}
 					
@@ -158,6 +174,12 @@ public class SelectMovie extends JFrame {
 		});
 		west.setBounds(10, 197, 69, 54);
 		contentPane.add(west);
+		
+		JLabel label_4 = new JLabel("λεπτά");
+		label_4.setBounds(269, 454, 104, 28);
+		contentPane.add(label_4);
+		
+		
 
 	}
 	
@@ -174,7 +196,7 @@ public class SelectMovie extends JFrame {
 	    BufferedImage image = null;
 	    URL url = null;
 	    try {
-	        url = new URL(r.getString(1));
+	        url = new URL(r.getString(2));
 	        image = ImageIO.read(url);
 	    } catch (MalformedURLException ex) {
 	        System.out.println("Malformed URL");

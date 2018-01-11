@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 public class SeatBooking extends JFrame {
 
@@ -17,7 +18,7 @@ public class SeatBooking extends JFrame {
 	JButton l[][], r[][]; // Names grid of JButtons
 	JPanel panel1, panel2; 
 	public SeatBooking() {
-		title = new JLabel("Επιλέξτε Θέσεις");
+		title = new JLabel("ΞΟΞ¬Ο„Ξ·ΟƒΞ· ΞΞ­ΟƒΞ·Ο‚");
 		title.setFont(new Font("Helvetica", Font.BOLD, 20));
 		title.setLocation(280,5);
 		title.setSize(600, 60);
@@ -63,11 +64,11 @@ public class SeatBooking extends JFrame {
             	}
 		}
 
-		JLabel j = new JLabel("Οθόνη");
+		JLabel j = new JLabel("ΞΞΈΟΞ½Ξ·");
 		j.setFont(new Font("Helvetica", Font.BOLD, 30));
 		j.setBounds(310,350,100,100);
     
-		JButton kratisi = new JButton("Κράτηση");
+		JButton kratisi = new JButton("ΞΟΞ¬Ο„Ξ·ΟƒΞ·");
 		kratisi.setBounds(305,180,100,20);
     
 		frame.add(title);
@@ -75,8 +76,9 @@ public class SeatBooking extends JFrame {
 		frame.add(j);
 		frame.add(kratisi);
 		frame.add(panel2);
+		frame.setBounds(100, 100, 582, 532);
 		frame.setPreferredSize(new Dimension(730, 470));
-		frame.setTitle("Κράτηση θέσεων");
+		frame.setTitle("Ξ•Ο€ΞΉΞ»ΞΏΞ³Ξ® ΞΞ­ΟƒΞ·Ο‚");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.pack(); //sets appropriate size for frame
 		frame.setVisible(true); //makes frame visible
