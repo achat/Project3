@@ -16,9 +16,11 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+@SuppressWarnings("serial")
 public class SeatBooking extends JFrame {
 
-	JFrame frame = new JFrame(); // Creates JFrame
+//	JFrame frame = new JFrame(); // Creates JFrame
+	private static SeatBooking frame;
 	JLabel title;
 	JButton l[][], r[][]; // Names grid of JButtons
 	String this_name;
@@ -27,11 +29,13 @@ public class SeatBooking extends JFrame {
 	public SeatBooking(String name) throws HeadlessException {
 		super();
 		this.this_name=name;
+		
+		frame = this;
 	
 		JPanel panel1, panel2; 
 	
 		System.out.println(this_name);
-		title = new JLabel("Κράτηση Θέσης");
+		title = new JLabel("Ξ�Ο�Ξ¬Ο„Ξ·ΟƒΞ· Ξ�Ξ­ΟƒΞ·Ο‚");
 		title.setFont(new Font("Helvetica", Font.BOLD, 20));
 		title.setLocation(280,5);
 		title.setSize(600, 60);
@@ -43,7 +47,7 @@ public class SeatBooking extends JFrame {
 		panel1.setBackground(Color.black);
 		panel1.setBounds(20, 70, 230, 200);
 		
-		JButton kratisi = new JButton("Κράτηση");
+		JButton kratisi = new JButton("Ξ�Ο�Ξ¬Ο„Ξ·ΟƒΞ·");
 		kratisi.setBounds(305,180,100,20);
 		kratisi.setEnabled(false);
 		
@@ -111,7 +115,7 @@ public class SeatBooking extends JFrame {
 			e1.printStackTrace();
 		}
 
-		JLabel j = new JLabel("Οθόνη");
+		JLabel j = new JLabel("Ξ�ΞΈΟ�Ξ½Ξ·");
 		j.setFont(new Font("Helvetica", Font.BOLD, 30));
 		j.setBounds(310,350,100,100);
     
@@ -124,12 +128,14 @@ public class SeatBooking extends JFrame {
 						"VALUES ('"+tempSeats.get(k)+"')");
 					tempSeats.remove(k);
     			}
-    			int confirmed = JOptionPane.showOptionDialog(null, "Η κράτηση πραγματοποιήθηκε επιτυχώς!", "", JOptionPane.DEFAULT_OPTION,
+    			int confirmed = JOptionPane.showOptionDialog(null, "Ξ— ΞΊΟ�Ξ¬Ο„Ξ·ΟƒΞ· Ο€Ο�Ξ±Ξ³ΞΌΞ±Ο„ΞΏΟ€ΞΏΞΉΞ®ΞΈΞ·ΞΊΞµ ΞµΟ€ΞΉΟ„Ο…Ο‡Ο�Ο‚!", "", JOptionPane.DEFAULT_OPTION,
     			        JOptionPane.INFORMATION_MESSAGE, null, null, null);
     			System.out.println(confirmed);
-    			if (confirmed == 0 || confirmed == -1) {
-    			     new SeatBooking(null).dispose();
-    			    }
+//    			if (confirmed == 0 || confirmed == -1) {
+//    			     new SeatBooking(null).dispose();
+//    			    }
+    			new MainScreen().setVisible(true);
+    			frame.dispose();
     		}
     	});
     
@@ -140,7 +146,7 @@ public class SeatBooking extends JFrame {
 		frame.add(panel2);
 		frame.setBounds(100, 100, 582, 532);
 		frame.setPreferredSize(new Dimension(730, 470));
-		frame.setTitle("Επιλογή Θέσης");
+		frame.setTitle("Ξ•Ο€ΞΉΞ»ΞΏΞ³Ξ® Ξ�Ξ­ΟƒΞ·Ο‚");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.pack(); //sets appropriate size for frame
 		frame.setVisible(true); //makes frame visible
