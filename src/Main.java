@@ -5,6 +5,6 @@ public class Main {
 	public static void main (String[] args) throws SQLException {
 		ResultSet rs = new DatabaseConnector().querySQL("SELECT * FROM users");
 		DatabaseConnector.printResultSet(rs);
-		new SelectMovie().setVisible(true);;
+		new Login().setVisible(true);		
 	}
 }
