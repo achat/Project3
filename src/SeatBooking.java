@@ -151,7 +151,7 @@ public class SeatBooking extends JFrame {
 				}
     			
     			count =0;
-    			int confirmed = JOptionPane.showOptionDialog(null, "Ξ— ΞΊΟ�Ξ¬Ο„Ξ·ΟƒΞ· Ο€Ο�Ξ±Ξ³ΞΌΞ±Ο„ΞΏΟ€ΞΏΞΉΞ®ΞΈΞ·ΞΊΞµ ΞµΟ€ΞΉΟ„Ο…Ο‡Ο�Ο‚!", "", JOptionPane.DEFAULT_OPTION,
+    			int confirmed = JOptionPane.showOptionDialog(null, "Seat Booking completed succesfully!", "", JOptionPane.DEFAULT_OPTION,
     			        JOptionPane.INFORMATION_MESSAGE, null, null, null);
 //    			if (confirmed == 0 || confirmed == -1) {
 //    			     new SeatBooking(null).dispose();
