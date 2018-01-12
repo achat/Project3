@@ -85,7 +85,7 @@ public class SelectMovie extends JFrame {
 		date.setBounds(230, 404, 113, 28);
 		contentPane.add(date);
 		
-		JButton button = new JButton("Επιλογή Θέσεων");
+		JButton button = new JButton("Choose Seats");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				setVisible(false);
@@ -103,15 +103,15 @@ public class SelectMovie extends JFrame {
 		button.setBounds(398, 424, 131, 23);
 		contentPane.add(button);
 		
-		JLabel label = new JLabel("Ώρα:");
+		JLabel label = new JLabel("Time:");
 		label.setBounds(27, 375, 104, 28);
 		contentPane.add(label);
 		
-		JLabel label_1 = new JLabel("Ημερομηνία:");
+		JLabel label_1 = new JLabel("Date:");
 		label_1.setBounds(230, 375, 104, 28);
 		contentPane.add(label_1);
 		
-		JLabel label_2 = new JLabel("Αίθουσα:");
+		JLabel label_2 = new JLabel("Hall:");
 		label_2.setBounds(27, 435, 104, 28);
 		contentPane.add(label_2);
 		
@@ -119,7 +119,7 @@ public class SelectMovie extends JFrame {
 		hall.setBounds(27, 454, 104, 28);
 		contentPane.add(hall);
 		
-		JLabel label_3 = new JLabel("Διάρκεια:");
+		JLabel label_3 = new JLabel("Duration:");
 		label_3.setBounds(230, 435, 104, 28);
 		contentPane.add(label_3);
 		
@@ -184,7 +184,7 @@ public class SelectMovie extends JFrame {
 		west.setBounds(10, 197, 69, 54);
 		contentPane.add(west);
 		
-		JLabel label_4 = new JLabel("λεπτά");
+		JLabel label_4 = new JLabel("mins");
 		label_4.setBounds(269, 454, 104, 28);
 		contentPane.add(label_4);
 		

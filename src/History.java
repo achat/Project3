@@ -101,7 +101,7 @@ public class History extends JFrame {
 		JLabel lblNewLabel_1 = new JLabel("Time");
 		panel_1.add(lblNewLabel_1);
 		
-		JButton btnNewButton = new JButton("Πίσω");
+		JButton btnNewButton = new JButton("Back");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				new MainScreen().setVisible(true);
