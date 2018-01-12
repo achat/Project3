@@ -35,8 +35,8 @@ public class SeatBooking extends JFrame {
 		JPanel panel1, panel2; 
 	
 		System.out.println(this_name);
-		title = new JLabel("Ξ�Ο�Ξ¬Ο„Ξ·ΟƒΞ· Ξ�Ξ­ΟƒΞ·Ο‚");
-		title.setFont(new Font("Helvetica", Font.BOLD, 20));
+		title = new JLabel("Choose your seats!");
+		title.setFont(new Font("Helvetica", Font.BOLD, 14));
 		title.setLocation(280,5);
 		title.setSize(600, 60);
 
@@ -47,7 +47,7 @@ public class SeatBooking extends JFrame {
 		panel1.setBackground(Color.black);
 		panel1.setBounds(20, 70, 230, 200);
 		
-		JButton kratisi = new JButton("Ξ�Ο�Ξ¬Ο„Ξ·ΟƒΞ·");
+		JButton kratisi = new JButton("Book now!");
 		kratisi.setBounds(305,180,100,20);
 		kratisi.setEnabled(false);
 		
@@ -115,8 +115,8 @@ public class SeatBooking extends JFrame {
 			e1.printStackTrace();
 		}
 
-		JLabel j = new JLabel("Ξ�ΞΈΟ�Ξ½Ξ·");
-		j.setFont(new Font("Helvetica", Font.BOLD, 30));
+		JLabel j = new JLabel("SCREEN");
+		j.setFont(new Font("Helvetica", Font.BOLD, 20));
 		j.setBounds(310,350,100,100);
     
 		
@@ -128,7 +128,7 @@ public class SeatBooking extends JFrame {
 						"VALUES ('"+tempSeats.get(k)+"')");
 					tempSeats.remove(k);
     			}
-    			int confirmed = JOptionPane.showOptionDialog(null, "Ξ— ΞΊΟ�Ξ¬Ο„Ξ·ΟƒΞ· Ο€Ο�Ξ±Ξ³ΞΌΞ±Ο„ΞΏΟ€ΞΏΞΉΞ®ΞΈΞ·ΞΊΞµ ΞµΟ€ΞΉΟ„Ο…Ο‡Ο�Ο‚!", "", JOptionPane.DEFAULT_OPTION,
+    			int confirmed = JOptionPane.showOptionDialog(null, "Congratulations, your reservation has been arranged!", "", JOptionPane.DEFAULT_OPTION,
     			        JOptionPane.INFORMATION_MESSAGE, null, null, null);
     			System.out.println(confirmed);
 //    			if (confirmed == 0 || confirmed == -1) {
@@ -146,7 +146,7 @@ public class SeatBooking extends JFrame {
 		frame.add(panel2);
 		frame.setBounds(100, 100, 582, 532);
 		frame.setPreferredSize(new Dimension(730, 470));
-		frame.setTitle("Ξ•Ο€ΞΉΞ»ΞΏΞ³Ξ® Ξ�Ξ­ΟƒΞ·Ο‚");
+//		frame.setTitle("Ξ•Ο€ΞΉΞ»ΞΏΞ³Ξ® Ξ�Ξ­ΟƒΞ·Ο‚");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.pack(); //sets appropriate size for frame
 		frame.setVisible(true); //makes frame visible

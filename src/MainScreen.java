@@ -45,8 +45,8 @@ public class MainScreen extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JButton bookTicket = new JButton("\u039A\u03C1\u03AC\u03C4\u03B7\u03C3\u03B7 \u0395\u03B9\u03C3\u03B7\u03C4\u03B7\u03C1\u03AF\u03BF\u03C5");
-		bookTicket.setForeground(Color.BLUE);
+		JButton bookTicket = new JButton("Book a ticket now");
+		bookTicket.setForeground(Color.BLACK);
 		bookTicket.setBounds(107, 60, 151, 23);
 		bookTicket.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -61,17 +61,18 @@ public class MainScreen extends JFrame {
 		});
 		contentPane.add(bookTicket);
 		
-		JButton bookingHistory = new JButton("\u0399\u03C3\u03C4\u03BF\u03C1\u03B9\u03BA\u03CC \u039A\u03C1\u03B1\u03C4\u03AE\u03C3\u03B5\u03C9\u03BD");
-		bookingHistory.setForeground(Color.BLUE);
+		JButton bookingHistory = new JButton("Tickets History");
+		bookingHistory.setForeground(Color.BLACK);
 		bookingHistory.setBounds(107, 120, 151, 23);
 		contentPane.add(bookingHistory);
 		
-		JButton exit = new JButton("\u0391\u03C0\u03BF\u03C3\u03CD\u03BD\u03B4\u03B5\u03C3\u03B7");
-		exit.setForeground(Color.BLUE);
+		JButton exit = new JButton("Exit");
+		exit.setForeground(Color.BLACK);
 		exit.setBounds(107, 180, 151, 23);
 		exit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				System.exit(0);
+				new Login().setVisible(true);		
+				frame.dispose();
 			}
 		});
 		contentPane.add(exit);

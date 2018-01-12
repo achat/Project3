@@ -57,7 +57,7 @@ public class Login extends JFrame {
 		setContentPane(loginPane);
 		loginPane.setLayout(null);
 		
-		JLabel usernameLabel = new JLabel("\u038C\u03BD\u03BF\u03BC\u03B1 \u03C7\u03C1\u03AE\u03C3\u03C4\u03B7");
+		JLabel usernameLabel = new JLabel("Username");
 		usernameLabel.setBounds(74, 91, 86, 14);
 		loginPane.add(usernameLabel);
 		
@@ -66,7 +66,7 @@ public class Login extends JFrame {
 		loginPane.add(username);
 		username.setColumns(10);
 				
-		JButton loginButton = new JButton("\u0395\u03AF\u03C3\u03BF\u03B4\u03BF\u03C2");
+		JButton loginButton = new JButton("Login");
 		loginButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try{
