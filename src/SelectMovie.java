@@ -1,5 +1,6 @@
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.HeadlessException;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -23,7 +24,6 @@ import java.awt.Dimension;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-@SuppressWarnings("serial")
 public class SelectMovie extends JFrame {
 
 	private JPanel contentPane;
@@ -85,26 +85,33 @@ public class SelectMovie extends JFrame {
 		date.setBounds(230, 404, 113, 28);
 		contentPane.add(date);
 		
-		JButton button = new JButton("Choose seats");
+		JButton button = new JButton("Επιλογή Θέσεων");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				setVisible(false);
-				System.out.println(name.getText());
-				new SeatBooking(name.getText()).setVisible(true);
+				try {
+					new SeatBooking(name.getText()).setVisible(true);
+				} catch (HeadlessException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		});
 		button.setBounds(398, 424, 131, 23);
 		contentPane.add(button);
 		
-		JLabel label = new JLabel("Start Time:");
+		JLabel label = new JLabel("Ώρα:");
 		label.setBounds(27, 375, 104, 28);
 		contentPane.add(label);
 		
-		JLabel label_1 = new JLabel("Date:");
+		JLabel label_1 = new JLabel("Ημερομηνία:");
 		label_1.setBounds(230, 375, 104, 28);
 		contentPane.add(label_1);
 		
-		JLabel label_2 = new JLabel("Hall:");
+		JLabel label_2 = new JLabel("Αίθουσα:");
 		label_2.setBounds(27, 435, 104, 28);
 		contentPane.add(label_2);
 		
@@ -112,7 +119,7 @@ public class SelectMovie extends JFrame {
 		hall.setBounds(27, 454, 104, 28);
 		contentPane.add(hall);
 		
-		JLabel label_3 = new JLabel("Duration:");
+		JLabel label_3 = new JLabel("Διάρκεια:");
 		label_3.setBounds(230, 435, 104, 28);
 		contentPane.add(label_3);
 		
@@ -177,7 +184,7 @@ public class SelectMovie extends JFrame {
 		west.setBounds(10, 197, 69, 54);
 		contentPane.add(west);
 		
-		JLabel label_4 = new JLabel("minutes");
+		JLabel label_4 = new JLabel("λεπτά");
 		label_4.setBounds(269, 454, 104, 28);
 		contentPane.add(label_4);
 		

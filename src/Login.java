@@ -27,6 +27,7 @@ public class Login extends JFrame {
 	private static Login frame;
 	private JLabel logo;
 	ResultSet rs;
+	public static String user;
 
 	/**
 	 * Launch the application.
@@ -70,7 +71,7 @@ public class Login extends JFrame {
 		loginButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try{
-					String user = username.getText().trim();
+					user = username.getText().trim();
 					String sqlQuery = "SELECT username FROM users WHERE username = '"+user+"'";
 					if (!user.isEmpty()){
 						rs = new DatabaseConnector().querySQL(sqlQuery);

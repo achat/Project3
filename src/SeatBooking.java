@@ -25,18 +25,20 @@ public class SeatBooking extends JFrame {
 	JButton l[][], r[][]; // Names grid of JButtons
 	String this_name;
 	ArrayList<String> tempSeats = new ArrayList<String>();
+	int count=0;
 	
-	public SeatBooking(String name) throws HeadlessException {
+	public SeatBooking(String name) throws HeadlessException, SQLException {
 		super();
 		this.this_name=name;
 		
 		frame = this;
 	
 		JPanel panel1, panel2; 
+		
+		
 	
-		System.out.println(this_name);
-		title = new JLabel("Choose your seats!");
-		title.setFont(new Font("Helvetica", Font.BOLD, 14));
+		title = new JLabel("Book your Seat");
+		title.setFont(new Font("Helvetica", Font.BOLD, 20));
 		title.setLocation(280,5);
 		title.setSize(600, 60);
 
@@ -47,8 +49,8 @@ public class SeatBooking extends JFrame {
 		panel1.setBackground(Color.black);
 		panel1.setBounds(20, 70, 230, 200);
 		
-		JButton kratisi = new JButton("Book now!");
-		kratisi.setBounds(305,180,100,20);
+		JButton kratisi = new JButton("Reserve Seats");
+		kratisi.setBounds(290,180,130,20);
 		kratisi.setEnabled(false);
 		
 
@@ -64,6 +66,7 @@ public class SeatBooking extends JFrame {
             				kratisi.setEnabled(true);
             				l[tempx][tempy].setEnabled(false);
             				tempSeats.add(l[tempx][tempy].getText());
+            				System.out.println(l[tempx][tempy].getText());
             			}
             		});
             		panel1.add(l[x][y]); //adds button to grid
@@ -85,6 +88,7 @@ public class SeatBooking extends JFrame {
                 			kratisi.setEnabled(true);
             				r[tempx][tempy].setEnabled(false);
                 			tempSeats.add(r[tempx][tempy].getText());
+                			System.out.println(r[tempx][tempy].getText());
                 		}
                 	});
                 	panel2.add(r[x][y]); //adds button to grid
@@ -115,9 +119,14 @@ public class SeatBooking extends JFrame {
 			e1.printStackTrace();
 		}
 
-		JLabel j = new JLabel("SCREEN");
-		j.setFont(new Font("Helvetica", Font.BOLD, 20));
-		j.setBounds(310,350,100,100);
+		JLabel j = new JLabel("Screen");
+		j.setFont(new Font("Helvetica", Font.BOLD, 30));
+		j.setBounds(310,330,150,150);
+		
+		
+		ResultSet res = new DatabaseConnector().querySQL("SELECT `Time`, `Date` FROM `Screenings` "
+				+ "WHERE Screenings.Name='" + this_name + "'");
+		res.next();
     
 		
 		kratisi.addActionListener(new ActionListener() {
@@ -126,19 +135,34 @@ public class SeatBooking extends JFrame {
     			for(int k=0;k<tempSeats.size();k++) {
 					int rs = new DatabaseConnector().updatequerySQL("INSERT INTO `Seats " + this_name + "` (Seats) " + 
 						"VALUES ('"+tempSeats.get(k)+"')");
-					tempSeats.remove(k);
+					count++;
     			}
-    			int confirmed = JOptionPane.showOptionDialog(null, "Congratulations, your reservation has been arranged!", "", JOptionPane.DEFAULT_OPTION,
+    			
+    			for(int k=0;k<tempSeats.size();k++)
+    				tempSeats.remove(k);
+    			
+    			try {
+					int rs = new DatabaseConnector().updatequerySQL("INSERT INTO `userHistory` "
+							+ "(`MovieName`, `TicketNumber`, `Time`, `Date`, `User`) VALUES ('" +this_name+ "', '"
+							+ Integer.toString(count) + "', '" +res.getString(1)+ "', '" + res.getString(2) + "', '"+ Login.user +"')")  ;
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+    			
+    			count =0;
+    			int confirmed = JOptionPane.showOptionDialog(null, "Ξ— ΞΊΟ�Ξ¬Ο„Ξ·ΟƒΞ· Ο€Ο�Ξ±Ξ³ΞΌΞ±Ο„ΞΏΟ€ΞΏΞΉΞ®ΞΈΞ·ΞΊΞµ ΞµΟ€ΞΉΟ„Ο…Ο‡Ο�Ο‚!", "", JOptionPane.DEFAULT_OPTION,
     			        JOptionPane.INFORMATION_MESSAGE, null, null, null);
-    			System.out.println(confirmed);
 //    			if (confirmed == 0 || confirmed == -1) {
 //    			     new SeatBooking(null).dispose();
 //    			    }
+    			
     			new MainScreen().setVisible(true);
     			frame.dispose();
     		}
     	});
     
+		
 		frame.add(title);
 		frame.add(panel1);
 		frame.add(j);
@@ -146,7 +170,7 @@ public class SeatBooking extends JFrame {
 		frame.add(panel2);
 		frame.setBounds(100, 100, 582, 532);
 		frame.setPreferredSize(new Dimension(730, 470));
-//		frame.setTitle("Ξ•Ο€ΞΉΞ»ΞΏΞ³Ξ® Ξ�Ξ­ΟƒΞ·Ο‚");
+		frame.setTitle("Seat Booking");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.pack(); //sets appropriate size for frame
 		frame.setVisible(true); //makes frame visible

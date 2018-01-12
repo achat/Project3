@@ -64,6 +64,17 @@ public class MainScreen extends JFrame {
 		JButton bookingHistory = new JButton("Tickets History");
 		bookingHistory.setForeground(Color.BLACK);
 		bookingHistory.setBounds(107, 120, 151, 23);
+		bookingHistory.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					new History().setVisible(true);
+					frame.dispose();
+				} catch (SQLException | InstantiationException | IllegalAccessException | ClassNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
 		contentPane.add(bookingHistory);
 		
 		JButton exit = new JButton("Exit");
