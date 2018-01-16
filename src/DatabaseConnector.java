@@ -7,11 +7,11 @@ import java.sql.SQLException;
 import com.mysql.jdbc.ResultSetMetaData;
 
 public class DatabaseConnector {
-	
+	private static Config cfg = new Config();
 	/* Database configuration */
-	private static String DB_NAME = "x";
-	private static String DB_USERNAME = "x";
-	private static String DB_PASSWORD = "x";
+	private static String DB_NAME = cfg.getProperty("database");;
+	private static String DB_USERNAME = cfg.getProperty("user");;
+	private static String DB_PASSWORD = cfg.getProperty("password");;
 	private static Connection conn;
 	
 	/* Open connection function */
